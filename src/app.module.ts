@@ -14,11 +14,11 @@ import { AppointmentModule } from './appointment/appointment.module';
     inject: [ConfigService],
     useFactory: (configService: ConfigService) => ({
       type: 'postgres',
-      host: configService.get('DATABASE_HOST'),
-      port: configService.get('DATABASE_PORT'),
-      username: configService.get('DATABASE_USERNAME'),
-      password: configService.get('DATABASE_PASSWORD'),
-      database: configService.get('DATABASE_NAME'),
+      url: configService.get<string>('DATABASE_URL'),
+      ssl: {
+        rejectUnauthorized: false, 
+      },
+      autoLoadEntities: true,
       synchronize: configService.get('DATABASE_SYNC'),
       entities: [__dirname + '/**/*.entity{.ts,.js}']
 
