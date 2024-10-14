@@ -8,7 +8,7 @@ import { AppointmentModule } from './appointment/appointment.module';
 
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.local.env'] }),
+  imports: [ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.pro.env'] }),
   TypeOrmModule.forRootAsync({
     imports: [ConfigModule],
     inject: [ConfigService],
